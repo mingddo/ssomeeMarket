@@ -7,7 +7,7 @@ import {
 } from '../types';
 
 const initialState = {
-  categorys: [],
+  categories: [],
   products: [],
   selected: null,
   cart: [],

@@ -7,7 +7,6 @@ function Header({ text }) {
   const navigation = useNavigation();
   const [isRoot, setisRoot] = useState(false);
   const route = useRoute();
-  console.log('dfasfa', route.name);
   useEffect(() => {
     if (route.name === 'ProductList') {
       setisRoot(true);
