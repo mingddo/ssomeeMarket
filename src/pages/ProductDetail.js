@@ -18,14 +18,17 @@ import {
 import {
   getCategoryAction,
   getProductsAction,
+  setCartAction,
 } from '../store/actions/dataActions';
 import useData from '../hooks/useData';
+
 //Components
 import Button from '../components/Button.js';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import Carousel from '../components/Carousel.js';
 import DetailHeader from '../components/DetailHeader.js';
+import RenderHtml from 'react-native-render-html';
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
@@ -36,7 +39,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const [detail, setDetail] = useState(null);
   const [images, setImages] = useState([]);
-  const { categorys, products, selected } = useData();
+  const { categorys, products, selected, cart } = useData();
   const getImgUrl = (data) => {
     const tempURL = [];
     tempURL.push({ idx: 0, url: data.mainImage });
@@ -57,6 +60,13 @@ export default function ProductDetail() {
       },
     );
   }, []);
+  const addCart = () => {
+    if (detail) {
+      dispatch(setCartAction(detail));
+      navigation.navigate('Cart');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Header text={'상세보기'} />
@@ -67,8 +77,14 @@ export default function ProductDetail() {
         <View style={styles.detailInfo}>
           {detail && <DetailHeader product={detail} />}
         </View>
+        {detail && (
+          <RenderHtml
+            contentWidth={width}
+            source={{ html: detail.description }}
+          />
+        )}
       </ScrollView>
-      <Footer />
+      {detail && <Footer soldout={detail.soldOut} onHandleAdd={addCart} />}
     </View>
   );
 }
@@ -76,12 +92,14 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     flex: 1,
+    height: height,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   body: {
-    flex: 0.67,
+    flex: 0.7,
     width: '100%',
     // flexDirection: 'column',
     // justifyContent: 'flex-start',

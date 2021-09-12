@@ -1,4 +1,10 @@
-import { SET_CATEGORIES, SET_PRODUCTS, SET_SELECTED_PRODUCT } from '../types';
+import {
+  SET_CATEGORIES,
+  SET_PRODUCTS,
+  SET_SELECTED_PRODUCT,
+  SET_CART,
+  CLEAR_CART,
+} from '../types';
 
 export const getCategoryAction = (category) => (dispatch) => {
   dispatch({
@@ -18,5 +24,18 @@ export const selectProductsAction = (id) => (dispatch) => {
   dispatch({
     type: SET_SELECTED_PRODUCT,
     payload: id,
+  });
+};
+
+export const setCartAction = (item) => (dispatch) => {
+  dispatch({
+    type: SET_CART,
+    payload: item,
+  });
+};
+
+export const clearCartAction = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_CART,
   });
 };

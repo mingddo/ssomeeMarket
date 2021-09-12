@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Dimensions, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { useRoute } from '@react-navigation/native';
 
 function Header({ text }) {
   const navigation = useNavigation();
+  const [isRoot, setisRoot] = useState(false);
+  const route = useRoute();
+  console.log('dfasfa', route.name);
+  useEffect(() => {
+    if (route.name === 'ProductList') {
+      setisRoot(true);
+    } else {
+      setisRoot(false);
+    }
+  }, []);
   return (
     <View style={styles.header}>
-      <Text
-        onHandlePress={() => {
-          navigation.goBack();
-        }}
-        style={styles.Back}>
-        ◀
-      </Text>
+      {!isRoot && (
+        <Text
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={styles.Back}>
+          ◀
+        </Text>
+      )}
       <Text style={styles.logoText}>{text}</Text>
     </View>
   );

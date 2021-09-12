@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  FlatList,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import {
   getCategories,
@@ -17,7 +24,6 @@ import useData from '../hooks/useData';
 //Components
 import Header from '../components/Header.js';
 import ProductCard from '../components/ProductCard.js';
-import { cli } from 'webpack';
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
@@ -27,6 +33,8 @@ export default function ProductList() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const { categorys, products } = useData();
+  const [maxPage, setMaxPage] = useState(null);
+  const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
     getCategories(
@@ -37,42 +45,72 @@ export default function ProductList() {
         console.error(err);
       },
     );
-    getProductsList(
-      11,
-      1,
-      'price-asc',
-      (res) => {
-        dispatch(getProductsAction(res.data.products));
-      },
-      (err) => {
-        console.error(err);
-      },
-    );
+    getProductsData();
   }, []);
 
+  const getProductsData = () => {
+    if (pageNum !== maxPage) {
+      getProductsList(
+        'all',
+        pageNum + 1,
+        'price-asc',
+        (res) => {
+          if (pageNum === 0) {
+            setMaxPage(res.data.maxPage);
+          }
+          dispatch(getProductsAction(res.data.products));
+        },
+        (err) => {
+          console.error(err);
+        },
+      );
+      if (pageNum !== maxPage) {
+        setPageNum(pageNum + 1);
+      }
+    }
+  };
+
+  const renderItem = ({ item }) => {
+    if (item) {
+      return <ProductCard product={item} onHandleSelect={onHandleSelect} />;
+    }
+  };
+
   const onHandleSelect = (target) => {
-    console.log('target :>> ', target);
     dispatch(selectProductsAction(target));
     navigation.navigate('ProductDetail');
   };
 
-  return (
-    <View style={styles.container}>
-      <Header text={'소미마켓'} />
-      <ScrollView style={styles.wraper}>
-        <View style={styles.itempwaper}>
-          {products.length !== 0 &&
-            products.map((product, idx) => (
-              <ProductCard
-                key={idx}
-                product={product}
-                onHandleSelect={onHandleSelect}
-              />
-            ))}
-        </View>
-      </ScrollView>
-    </View>
-  );
+  if (products) {
+    return (
+      <View style={styles.container}>
+        <Header text={'소미마켓'} />
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: 'bold',
+            alignSelf: 'flex-start',
+            marginVertical: 3,
+            marginHorizontal: 15,
+          }}>
+          전체
+        </Text>
+        <FlatList
+          style={styles.wraper}
+          data={products}
+          renderItem={renderItem}
+          onEndReachedThreshold={0.3}
+          onEndReached={getProductsData}
+          keyExtractor={(item, index) => index}
+          horizontal={false}
+          numColumns={2}
+          columnWrapperStyle={styles.itempwaper}
+        />
+      </View>
+    );
+  } else {
+    return null;
+  }
 }
 const styles = StyleSheet.create({
   container: {
@@ -88,9 +126,8 @@ const styles = StyleSheet.create({
   },
   itempwaper: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'flex-start',
+    marginHorizontal: 5,
   },
 });

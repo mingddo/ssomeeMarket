@@ -41,7 +41,6 @@ export default function Carousel({ pages, pageWidth, gap, offset }) {
       e.nativeEvent.contentOffset.x / (pageWidth + gap),
     );
     if (Math.abs(newPage) !== page) {
-      console.log(`newPage`, newPage);
       setPage(Math.abs(newPage));
     }
   };

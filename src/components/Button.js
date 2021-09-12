@@ -30,7 +30,7 @@ function Button({
           backgroundColor: disabled ? 'grey' : backgroundColor || '#1D181E',
           width: btnWidth || windowWidth * 0.4,
           height: btnHeight || windowHeight * 0.08,
-          borderRadius: borderRadius || 14,
+          borderRadius: borderRadius || 0,
           margin: margin || 0,
         },
       ]}>

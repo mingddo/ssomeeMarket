@@ -1,11 +1,11 @@
-const path = require('path')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: path.resolve(__dirname, './public/index.html'),
   filename: 'index.html',
   inject: 'body',
-})
+});
 
 module.exports = {
   entry: path.join(__dirname, 'index.web.js'),
@@ -27,9 +27,8 @@ module.exports = {
       },
       {
         test: /\.(gif|svg|jpg|png)$/,
-        loader: "file-loader",
-      }
-
+        loader: 'file-loader',
+      },
     ],
   },
 
@@ -39,11 +38,4 @@ module.exports = {
     },
   },
   plugins: [HTMLWebpackPluginConfig],
-  // devServer: {
-  // 	open: true,
-  //   historyApiFallback: true,
-  //   contentBase: './',
-  //   hot: true,
-  //   port: 3000,
-  // },
-}
+};
