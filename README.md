@@ -178,21 +178,21 @@
 
 - **ProductList**
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631453980.png" alt="Screenshot_1631453980" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007235-e4819bcd-ebb8-4673-af79-6984dc220262.png" alt="Screenshot_1631453980" style="zoom:25%;" />
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631453986.png" alt="Screenshot_1631453986" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007255-3920b03a-a257-4ce7-b3a5-858c309a690f.png" alt="Screenshot_1631453986" style="zoom:25%;" />
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631453983.png" alt="Screenshot_1631453983" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007276-9da528b4-1ecb-446d-8ece-73e73e4b9d26.png" alt="Screenshot_1631453983" style="zoom:25%;" />
 
 - **ProductDetail**
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631445355.png" alt="Screenshot_1631445355" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007292-a48dad4e-9daa-46e2-bb4e-1c75c510ad9a.png" alt="Screenshot_1631445355" style="zoom:25%;" />
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631445360.png" alt="Screenshot_1631445360" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007293-fca9320f-62e4-445e-883b-598d2f2394d9.png" alt="Screenshot_1631445360" style="zoom:25%;" />
 
 - **Cart**
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631445389.png" alt="Screenshot_1631445389" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007310-28b0bd4f-26d2-4f2f-98a6-f7ee26231827.png" alt="Screenshot_1631445389" style="zoom:25%;" />
 
-<img src="C:\Users\hanta\Desktop\DHC\Desktop\Screenshot_1631445393.png" alt="Screenshot_1631445393" style="zoom:25%;" />
+<img src="https://user-images.githubusercontent.com/68373317/133007328-ecb7a326-189b-4db3-8c12-fe6e723ab7d3.png" style="zoom:25%;" />
 
