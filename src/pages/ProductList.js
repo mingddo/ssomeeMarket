@@ -108,7 +108,6 @@ export default function ProductList() {
   };
 
   const renderItem = useCallback(({ item }) => {
-    console.log(`item`, item);
     if (item) {
       return <ProductCard product={item} onHandleSelect={onHandleSelect} />;
     }

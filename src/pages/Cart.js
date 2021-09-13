@@ -40,7 +40,6 @@ export default function Cart() {
         orderProducts(
           c.prefix,
           (res) => {
-            console.log('res.data :>> ', res.data);
           },
           (err) => {
             console.error('err :>> ', err);
@@ -57,7 +56,6 @@ export default function Cart() {
     }
   };
   const changeModalState = () => {
-    console.log(`여기!!`);
     setModalVisible(!modalVisible);
   };
   const closeModal = () => {
